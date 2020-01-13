@@ -59,7 +59,7 @@
         android:layout_marginTop="40dp"
         android:background="@color/colorPrimaryDark"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/bannerIdTrial" />
+        ads:adUnitId="@string/bannerIdMain" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView2"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/bannerIdTrial"
+        ads:adUnitId="@string/bannerIdMain"
         tools:ignore="DuplicateIds" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/bannerIdTrial"
+        ads:adUnitId="@string/bannerIdMain"
         tools:ignore="DuplicateIds" />
 
     <TextView
@@ -85,9 +85,9 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_toolbar"
+        android:background="@drawable/bg_toolbar2"
         android:drawableStart="@drawable/focus"
         android:gravity="center"
         android:paddingStart="20dp"
@@ -96,5 +96,14 @@
         android:textSize="20sp"
         tools:ignore="RtlSymmetry" />
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@color/colorPrimaryDark"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/bannerIdMain"
+        tools:ignore="DuplicateIds" />
 
 </LinearLayout>

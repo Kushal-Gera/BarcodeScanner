@@ -17,7 +17,6 @@ import com.google.zxing.Result
 import kotlinx.android.synthetic.main.activity_main.*
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
-
 var FROM_NOW = "fromNow"
 
 class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
@@ -34,16 +33,21 @@ class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
         MobileAds.initialize(this)
         val adRequest = AdRequest.Builder().build()
+
         adView.loadAd(adRequest)
-
         adView2.loadAd(adRequest)
-
         adView3.loadAd(adRequest)
+        adView4.loadAd(adRequest)
 
         scannerView = ZXingScannerView(this)
         launchCam.setOnClickListener {
             ONHOME = false
             doStuff()
+        }
+        drawer.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://play.google.com/store/apps/developer?id=Kushal+Gera")
+            startActivity(intent)
         }
 
         settings.setOnClickListener {
@@ -55,11 +59,13 @@ class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
             )
         }
 
-        if (sharedPreferences.getBoolean(START, false) and intent.getBooleanExtra(FROM_NOW, true)
+        if (sharedPreferences.getBoolean(START, false)
+            and intent.getBooleanExtra(FROM_NOW, true)
         ) {
             ONHOME = false
             doStuff()
         }
+
 
     }
 
@@ -86,8 +92,7 @@ class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
                 myText?.let { copy(it) }
                 Toast.makeText(this, "Copied To Clip Board", Toast.LENGTH_SHORT).show()
             }
-        }
-        else {
+        } else {
             android.app.AlertDialog.Builder(
                 this,
                 R.style.AlertDialogCustom
