@@ -76,21 +76,18 @@ class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(myText)
-        intent.setPackage("com.android.chrome")
+
 
         if (sharedPreferences.getBoolean(OPEN_LINK, false)) {
             try {
                 startActivity(intent)
             } catch (e: Exception) {
 
-                val clipboard: ClipboardManager =
-                    getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clip = ClipData.newPlainText("text : ", myText)
-                clipboard.setPrimaryClip(clip)
-
+                myText?.let { copy(it) }
                 Toast.makeText(this, "Copied To Clip Board", Toast.LENGTH_SHORT).show()
             }
-        } else {
+        }
+        else {
             android.app.AlertDialog.Builder(
                 this,
                 R.style.AlertDialogCustom
@@ -98,13 +95,16 @@ class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
                 .setTitle("Search it on Web ?")
                 .setMessage(myText)
                 .setPositiveButton("web") { dialogInterface: DialogInterface, i: Int ->
-                    startActivity(intent)
+                    try {
+                        startActivity(intent)
+                    } catch (e: Exception) {
+
+                        myText?.let { copy(it) }
+                        Toast.makeText(this, "Copied To Clip Board", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 .setNegativeButton("copy") { dialogInterface: DialogInterface, i: Int ->
-                    val clipboard: ClipboardManager =
-                        getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                    val clip = ClipData.newPlainText("text : ", myText)
-                    clipboard.setPrimaryClip(clip)
+                    myText?.let { copy(it) }
                     Toast.makeText(this, "copied", Toast.LENGTH_SHORT).show()
 
                     dialogInterface.dismiss()
@@ -185,6 +185,14 @@ class MainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
             startActivity(intent)
             finish()
         }
+    }
+
+    fun copy(str: String) {
+
+        val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("text : ", str)
+
+        clipboardManager.setPrimaryClip(clip)
     }
 
 }
