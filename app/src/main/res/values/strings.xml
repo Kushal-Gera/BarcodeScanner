@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Barcode Scanner</string>
+    <string name="description">description</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="settings">Settings</string>
+    <string name="launch_camera_on_start">Launch Camera on Start</string>
+    <string name="receive_notifications">Receive Notifications</string>
+    <string name="developers">Developers</string>
+    <string name="share_app">Share App</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="open_link_on_scan">Open Link On Scan</string>
+    <string name="launch_camera">Launch Camera</string>
+
+    <string name="bannerIdTrial">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="bannerIdMain">ca-app-pub-5073642246912223/7648163148</string>
+</resources>
